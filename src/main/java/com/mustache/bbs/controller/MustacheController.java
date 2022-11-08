@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class MustacheController {
 
     @GetMapping("/hi/{id}")
-    public String mustacheCon(Model model, @PathVariable String id){
+    public String mustacheCon(Model model, @PathVariable Long id){
         model.addAttribute("username", "cmkxak");
         model.addAttribute("userId", id);
         return "greetings";
