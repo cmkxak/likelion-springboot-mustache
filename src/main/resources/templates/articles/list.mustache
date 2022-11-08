@@ -1,0 +1,25 @@
+{{>layouts/header}}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">title</th>
+        <th scope="col">contents</th>
+    </tr>
+    </thead>
+
+    <tbody class = "table-group-divisor">
+    {{#articles}}
+    <tr>
+        <th>{{id}}</th>
+        <td><a href="/articles/{{id}}">{{title}}</a></td>
+        <td>
+            {{#contents}}{{contents}}{{/contents}}
+            {{^contents}}nothing{{/contents}}
+        </td>
+    </tr>
+    {{/articles}}
+    </tbody>
+</table>
+<a href="/articles/new">new article</a>
+<a href="/articles">articles List</a>
