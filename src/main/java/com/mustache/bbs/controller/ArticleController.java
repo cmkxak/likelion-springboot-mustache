@@ -58,4 +58,24 @@ public class ArticleController {
         articleService.save(savedArticle);
         return "redirect:/articles/" + savedArticle.getId();
     }
+
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable Long id, Model model){
+        //수정할 데이터 가져오기
+        Article article = articleService.findById(id).orElse(null);
+        //모델에 데이터 등록
+        model.addAttribute("article", article);
+        //뷰 페이지 설정
+        return "articles/edit";
+    }
+
+    @PostMapping("/{id}/update")
+    public String edit(@PathVariable Long id, ArticleDto articleDto, Model model){
+        Article article = articleDto.toEntity();
+        log.info(article.toString());
+
+        Article savedArticle = articleService.save(article);
+        model.addAttribute("article", savedArticle);
+        return "redirect:/articles/" + savedArticle.getId();
+    }
 }

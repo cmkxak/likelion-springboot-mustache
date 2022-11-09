@@ -4,13 +4,18 @@
         <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{id}}</h6>
+
             <p class="card-text">
                 {{#contents}}{{contents}}{{/contents}}
                 {{^contents}}nothing{{/contents}}
             </p>
+
+            <!-- 이동 기능 추가 -->
             <a href="/articles/new" class="card-link">new article</a>
             <a href="/articles" class="card-link">list article</a>
         </div>
+
+        <a href="/articles/{{id}}/edit" class="btn btn-primary">Edit</a>
     {{/article}}
 </div>
 {{>layouts/footer}}
