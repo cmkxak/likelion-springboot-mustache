@@ -54,8 +54,8 @@ public class ArticleController {
     @PostMapping("/posts")
     public String createArticle(ArticleDto articleDto){
         log.info(articleDto.toString());
-        Article article = articleDto.toEntity();
-        articleService.save(article);
-        return "";
+        Article savedArticle = articleDto.toEntity();
+        articleService.save(savedArticle);
+        return "redirect:/articles/" + savedArticle.getId();
     }
 }
