@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -77,5 +79,18 @@ public class ArticleController {
         Article savedArticle = articleService.save(article);
         model.addAttribute("article", savedArticle);
         return "redirect:/articles/" + savedArticle.getId();
+    }
+
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable Long id, RedirectAttributes rttr){
+        Article article = articleService.findById(id).orElse(null);
+        log.info(article.toString());
+
+        if(article != null){
+            articleService.delete(article);
+            rttr.addFlashAttribute("msg", "게시글이 삭제되었습니다.");
+        }
+
+        return "redirect:/articles";
     }
 }
