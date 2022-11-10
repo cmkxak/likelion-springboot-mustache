@@ -1,11 +1,11 @@
 FROM gradle:7.4-jdk11-alpine as builder
 WORKDIR /build
 
-#그래들 파일이 변경되었을 때만 새롭게 의존패키지 다운로드 받게함
+# 그래들 파일이 변경되었을 때만 새롭게 의존패키지 다운로드 받게함.
 COPY build.gradle settings.gradle /build/
-RUN gradle build -x test --parallel --continue > /dev/null2>&1 || true
+RUN gradle build -x test --parallel --continue > /dev/null 2>&1 || true
 
-#빌더 이미지에서 애플리케이션 빌드
+# 빌더 이미지에서 애플리케이션 빌드
 COPY . /build
 RUN gradle build -x test --parallel
 
@@ -13,20 +13,22 @@ RUN gradle build -x test --parallel
 FROM openjdk:11.0-slim
 WORKDIR /app
 
-# 빌더 이미지에서 jar파일만 복사
-COPY --from=builder
-/build/build/libs/bbs-0.0.1-SNAPSHOT.jar .
+# 빌더 이미지에서 jar 파일만 복사
+COPY --from=builder /build/build/libs/bbs-0.0.1-SNAPSHOT.jar .
 
 EXPOSE 8080
-ENTRYPOINT[
+
+# root 대신 nobody 권한으로 실행
+USER nobody
+ENTRYPOINT [
 \
-    "java",
+   "java",
 \
-    "-jar",
+   "-jar",
 \
-    "-Djava.security.egd=file:/dev/./urandom",
+   "-Djava.security.egd=file:/dev/./urandom",
 \
-    "-Dsun.net.inetaddr.ttl=0",
+   "-Dsun.net.inetaddr.ttl=0",
 \
-    "bbs5-0.0.1-SNAPSHOT.jar"
+   "bbs5-0.0.1-SNAPSHOT.jar"              \
 ]
