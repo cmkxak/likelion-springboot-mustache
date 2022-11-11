@@ -21,6 +21,8 @@ public class HospitalController {
     @GetMapping("")
     public String index(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
         model.addAttribute("hospitalList", hospitalService.findAllByDTO(pageable));
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
         return "hospitals/list";
     }
 }
