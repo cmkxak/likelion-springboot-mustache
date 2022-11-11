@@ -4,8 +4,8 @@ import com.mustache.bbs.domain.dto.HospitalDto;
 import com.mustache.bbs.domain.entity.Hospital;
 import com.mustache.bbs.repository.HospitalRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @AllArgsConstructor
@@ -13,7 +13,7 @@ import java.util.List;
 public class HospitalService {
     private final HospitalRepository hospitalRepository;
 
-    public List<HospitalDto> findAllByDTO(){
-        return hospitalRepository.findAllByDTO();
+    public List<HospitalDto> findAllByDTO(Pageable pageable){
+        return hospitalRepository.findAllByDTO(pageable);
     }
 }

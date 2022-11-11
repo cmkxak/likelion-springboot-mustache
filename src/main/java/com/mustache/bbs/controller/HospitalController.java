@@ -20,7 +20,7 @@ public class HospitalController {
     private final HospitalService hospitalService;
     @GetMapping("")
     public String index(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
-        model.addAttribute("hospitalList", hospitalService.findAllByDTO());
+        model.addAttribute("hospitalList", hospitalService.findAllByDTO(pageable));
         return "hospitals/list";
     }
 }
