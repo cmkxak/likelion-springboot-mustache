@@ -45,7 +45,7 @@ class HospitalRepositoryTest {
     void findByTotalNumberofBeds(){
         int min = 10;
         int max = 20;
-        List<Hospital> hospitals = hospitalRepository.findByTotalNumberOfBedsBetween(min, max);
+        List<Hospital> hospitals = hospitalRepository.findByTotalNumberOfBedsBetweenOrderByPatientRoomCountDesc(min, max);
 
         printQueryResult(hospitals);
     }

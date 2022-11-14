@@ -20,7 +20,7 @@ public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
     //경기도 수원시에 있는 피부과 라는 문자열을 포함하는 Hospital 반환
     List<Hospital> findByRoadNameAddressContainsAndHospitalNameContains(String roadNameAddress, String businessTypeName);
 
-    //병상 수가 10개 이상 20개 미만인 Hospital 반환
-    List<Hospital> findByTotalNumberOfBedsBetween(int min, int max);
+    //병상 수가 10개 이상 20개 미만인 Hospital 데이터를 PatientRoomCount를 기준으로 내림차순 반환
+    List<Hospital> findByTotalNumberOfBedsBetweenOrderByPatientRoomCountDesc(int min, int max);
 
 }
