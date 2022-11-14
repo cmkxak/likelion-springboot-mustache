@@ -13,4 +13,6 @@ import java.util.List;
 public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
     @Query("select new com.mustache.bbs.domain.dto.HospitalDto(h.id, h.hospitalName, h.roadNameAddress) from Hospital h")
     List<HospitalDto> findAllByDTO(Pageable pageable);
+
+    List<Hospital> findByBusinessTypeNameInAndRoadNameAddressContains(List<String> businessType, String roadNameAddress);
 }
