@@ -26,7 +26,32 @@ class HospitalRepositoryTest {
         hospitalColumnList.add("보건진료소");
 
         List<Hospital> hospitalsbyBusinessTypeNameIn = hospitalRepository.findByBusinessTypeNameInAndRoadNameAddressContains(hospitalColumnList, "광진구");
-        for (Hospital hospital : hospitalsbyBusinessTypeNameIn) {
+
+        printQueryResult(hospitalsbyBusinessTypeNameIn);
+    }
+
+    @Test
+    @DisplayName("BusinessTypeName이 피부과이고, 경기도 수원시에 있는 hospital")
+    void findByBusinessTypeNameAndRoadNameAddress(){
+        String roadNameAddress = "수원";
+        String hospitalName = "피부";
+
+        List<Hospital> hospitals = hospitalRepository.findByRoadNameAddressContainsAndHospitalNameContains(roadNameAddress, hospitalName);
+
+        printQueryResult(hospitals);
+    }
+    @Test
+    @DisplayName("병상 수가 10개 이상 20개 미만인 병원 데이터 가져오기")
+    void findByTotalNumberofBeds(){
+        int min = 10;
+        int max = 20;
+        List<Hospital> hospitals = hospitalRepository.findByTotalNumberOfBedsBetween(min, max);
+
+        printQueryResult(hospitals);
+    }
+
+    private void printQueryResult(List<Hospital> hospitals) {
+        for (Hospital hospital : hospitals) {
             System.out.println(hospital.getHospitalName().concat(" " + hospital.getRoadNameAddress() + " "));
         }
     }
