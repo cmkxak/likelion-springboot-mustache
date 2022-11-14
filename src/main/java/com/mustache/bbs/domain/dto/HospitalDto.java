@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter
 @ToString
 public class HospitalDto {
     //id, 병원명, 도로명 주소
