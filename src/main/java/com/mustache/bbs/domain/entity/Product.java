@@ -1,6 +1,7 @@
 package com.mustache.bbs.domain.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Product {
@@ -16,4 +17,8 @@ public class Product {
 
     @Column(nullable = false)
     private Integer stock;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updateAt;
 }
