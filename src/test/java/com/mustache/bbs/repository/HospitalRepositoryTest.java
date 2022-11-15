@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class HospitalRepositoryTest {
@@ -40,6 +37,12 @@ class HospitalRepositoryTest {
 
         printQueryResult(hospitals);
     }
+
+    /**
+     * SELECT * FROM `likelion-db1`.nation_wide_hospitals
+     * where total_number_of_beds between 10 and 20
+     * order by patient_room_count desc;
+     */
     @Test
     @DisplayName("병상 수가 10개 이상 20개 미만인 병원 데이터 가져오기")
     void findByTotalNumberofBeds(){
