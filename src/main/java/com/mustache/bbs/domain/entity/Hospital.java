@@ -1,5 +1,6 @@
 package com.mustache.bbs.domain.entity;
 
+import com.mustache.bbs.domain.dto.HospitalResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,35 +17,24 @@ import java.time.LocalDateTime;
 public class Hospital {
     @Id
     private Integer id;
-    @Column
     private String openServiceName;
-    @Column
     private int openLocalGovernmentCode;
-    @Column
     private String managementNumber;
-    @Column
     private LocalDateTime licenseDate;
-    @Column
     private int businessStatus;
-    @Column
     private int businessStatusCode;
-    @Column
     private String phone;
-    @Column
     private String fullAddress;
-    @Column
     private String roadNameAddress;
-    @Column
     private String hospitalName;
-    @Column
     private String businessTypeName;
-    @Column
     private int healthcareProviderCount;
-    @Column
     private int patientRoomCount;
-    @Column
     private int totalNumberOfBeds;
-    @Column
     private float totalAreaSize;
 
+    public static HospitalResponse of(Hospital hospital){
+        return new HospitalResponse(hospital.getId(), hospital.getRoadNameAddress(), hospital.getHospitalName(), hospital.getPatientRoomCount(),
+                hospital.getTotalNumberOfBeds(), hospital.getBusinessTypeName(), hospital.getTotalAreaSize());
+    }
 }
