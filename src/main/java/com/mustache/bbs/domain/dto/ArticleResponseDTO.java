@@ -1,7 +1,9 @@
 package com.mustache.bbs.domain.dto;
 
-import jdk.jshell.Snippet;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Getter

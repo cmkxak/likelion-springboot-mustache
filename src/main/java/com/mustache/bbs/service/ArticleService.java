@@ -1,13 +1,10 @@
 package com.mustache.bbs.service;
 
-import com.mustache.bbs.domain.dto.ArticleDto;
 import com.mustache.bbs.domain.dto.ArticleResponseDTO;
 import com.mustache.bbs.domain.entity.Article;
 import com.mustache.bbs.repository.ArticleRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

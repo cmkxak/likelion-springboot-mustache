@@ -2,7 +2,6 @@ package com.mustache.bbs.domain.entity;
 
 import com.mustache.bbs.domain.dto.ArticleResponseDTO;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
