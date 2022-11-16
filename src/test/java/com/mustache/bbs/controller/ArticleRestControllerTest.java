@@ -1,8 +1,6 @@
 package com.mustache.bbs.controller;
 
-import com.mustache.bbs.domain.dto.ArticleDto;
 import com.mustache.bbs.domain.dto.ArticleResponseDTO;
-import com.mustache.bbs.domain.entity.Article;
 import com.mustache.bbs.service.ArticleService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,14 +26,14 @@ class ArticleRestControllerTest {
 
     @Test
     @DisplayName("한 개의 게시글 조회 하기")
-    void getUser() throws Exception {
+    void getArticle() throws Exception {
         ArticleResponseDTO articleResponseDTO = ArticleResponseDTO.builder()
                 .id(1L)
                 .title("gg")
                 .contents("gg")
                 .build();
 
-        given(articleService.findById(1L)).willReturn(articleResponseDTO);
+        given(articleService.getArticle(1L)).willReturn(articleResponseDTO);
 
         Long articleId = 1L;
 
@@ -48,29 +46,5 @@ class ArticleRestControllerTest {
                 .andDo(print());
 
         verify(articleService).findById(articleId);
-    }
-
-    @Test
-    void test1() throws Exception {
-        ArticleResponseDTO articleResponse = ArticleResponseDTO.builder()
-                .id(1L)
-                .contents("gg")
-                .title("gg")
-                .build();
-
-        given(articleService.findById(1L)).willReturn(articleResponse);
-
-        Long articleId = 1L;
-
-        String url = String.format("/api/v1/articles/%d", articleId);
-        mockMvc.perform(get(url))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.title").value("gg"))
-                .andExpect(jsonPath("$.content").value("gg"))
-                .andDo(print());
-
-        verify(articleService).findById(articleId);
-
     }
 }
