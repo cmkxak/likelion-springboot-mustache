@@ -20,6 +20,11 @@ public class Article {
     private String title;
     private String contents;
 
+    public Article(String title, String contents){
+        this.id = id;
+        this.contents = contents;
+    }
+
     public static ArticleResponseDTO of(Long id, String title, String contents){
         return new ArticleResponseDTO(id, title, contents);
     }
