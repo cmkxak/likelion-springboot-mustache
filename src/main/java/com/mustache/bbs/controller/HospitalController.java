@@ -22,16 +22,15 @@ public class HospitalController {
     private final HospitalService hospitalService;
 
     @GetMapping("")
-    public String index(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+    public String index(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         model.addAttribute("hospitalList", hospitalService.findAllByDTO(pageable));
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
         model.addAttribute("next", pageable.next().getPageNumber());
         return "hospitals/list";
     }
 
-    //1. requestParam 활용해서, 페이징 처리가 안됨 keyword가 고정적이지 않고 계속 동적으로 변함 (뷰에서 동적으로 처리할시)
     @GetMapping("/search")
-    public String findHospitalByRoadAddress(@RequestParam String keyword, Model model,@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+    public String findHospitalByRoadAddress(@RequestParam(required = false, value="keyword", defaultValue = "") String keyword, Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         model.addAttribute("hospitalList", hospitalService.findByRoadnameAddress(keyword, pageable));
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
         model.addAttribute("next", pageable.next().getPageNumber());

@@ -1,6 +1,8 @@
 {{>layouts/header}}
 <form class="d-flex" action="/hospitals/search" method="get" role="search">
-    <input class="form-control me-2" name = "keyword" type="search" placeholder="지역명으로 병원 검색하기" aria-label="Search">
+    {{#keyword}}
+    <input class="form-control me-2" name = "keyword" value="{{keyword}}" type="search" placeholder="지역명으로 병원 검색하기" aria-label="Search">
+    {{/keyword}}
     <button class="btn btn-outline-success" type="submit">검색</button>
 </form>
 
@@ -32,7 +34,15 @@
 </table>
 
 <div class="pagination justify-content-center">
-    <a href="?keyword={{keyword}}&page={{previous}}" role="button" class="btn btn-dark ">이전</a>
-    <a href="?keyword={{keyword}}&page={{next}}" role="button" class="btn btn-dark">다음</a>
+    {{#keyword}}
+        <a href="?keyword={{#keyword}}{{keyword}}{{/keyword}}&page={{previous}}" role="button" class="btn btn-dark ">이전</a>
+        <a href="?keyword={{#keyword}}{{keyword}}{{/keyword}}&page={{next}}" role="button" class="btn btn-dark">다음</a>
+    {{/keyword}}
+
+    {{^keyword}}
+            <a href="&page={{previous}}" role="button" class="btn btn-dark ">이전</a>
+            <a href="&page={{next}}" role="button" class="btn btn-dark">다음</a>
+    {{/keyword}}
+
 </div>
 {{>layouts/footer}}
