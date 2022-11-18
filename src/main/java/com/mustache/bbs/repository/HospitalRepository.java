@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
@@ -23,4 +24,5 @@ public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
     //병상 수가 10개 이상 20개 미만인 Hospital 데이터를 PatientRoomCount를 기준으로 내림차순 반환
     List<Hospital> findByTotalNumberOfBedsBetweenOrderByPatientRoomCountDesc(int min, int max);
 
+    List<HospitalDto> findByRoadNameAddressContains(String keyword, Pageable pageable);
 }

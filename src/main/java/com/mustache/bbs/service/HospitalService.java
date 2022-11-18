@@ -33,4 +33,8 @@ public class HospitalService {
         }
         return hospitalResponse;
     }
+
+    public List<HospitalDto> findByRoadnameAddress(String keyword, Pageable pageable) {
+        return hospitalRepository.findByRoadNameAddressContains(keyword, pageable);
+    }
 }
