@@ -1,6 +1,6 @@
 {{>layouts/header}}
 <div class="card" style="width: 18rem;">
-    {{#hospitals}}
+{{#hospitals}}
         <div class="card-body">
             <h5 class="card-title">{{hospitalName}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{id}}</h6>
@@ -15,8 +15,36 @@
                 {{^businessStatusName}} {{/businessStatusName}}
             </p>
         </div>
-        <a href="/hospital" class="card-link">병원 리스트로 이동하기</a>
-    {{/hospitals}}
     </div>
-</div>
+    <div class="mt-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">제목</th>
+                <th scope="col">후기</th>
+                <th scope="col">작성자</th>
+            </tr>
+            </thead>
+            {{#review}}
+            <tbody>
+            <tr>
+                <td>
+                    {{#title}}{{title}}{{/title}}
+                    {{^title}}제목 없음{{/title}}
+                </td>
+                <td>
+                    {{#contents}}{{contents}}{{/contents}}
+                    {{^contents}} {{/contents}}
+                </td>
+                <td>
+                    {{#username}}{{username}}{{/username}}
+                    {{^username}}이름 없음{{/username}}
+                </td>
+            </tr>
+            {{/review}}
+        </tbody>
+        </table>
+    </div>
+    <a href="/hospital" class="card-link">병원 리스트로 이동하기</a>
+{{/hospitals}}
 {{>layouts/footer}}
