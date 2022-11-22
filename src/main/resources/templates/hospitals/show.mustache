@@ -1,0 +1,22 @@
+{{>layouts/header}}
+<div class="card" style="width: 18rem;">
+    {{#hospitals}}
+        <div class="card-body">
+            <h5 class="card-title">{{hospitalName}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{id}}</h6>
+
+            <p class="card-text">
+                {{#roadNameAddress}}{{roadNameAddress}}{{/roadNameAddress}}
+                {{^roadNameAddress}}등록된 주소가 없습니다.{{/roadNameAddress}}
+            </p>
+
+            <p class="card-text">
+                {{#businessStatusName}}{{businessStatusName}}{{/businessStatusName}}
+                {{^businessStatusName}} {{/businessStatusName}}
+            </p>
+        </div>
+        <a href="/hospital" class="card-link">병원 리스트로 이동하기</a>
+    {{/hospitals}}
+    </div>
+</div>
+{{>layouts/footer}}

@@ -35,7 +35,17 @@ public class Hospital {
     private int totalNumberOfBeds;
     private float totalAreaSize;
 
-    public static HospitalResponse of(Hospital hospital){
+    @Transient
+    private String businessStatusName;
+
+    public Hospital(Integer id, String hospitalName, String roadNameAddress, String businessStatusName) {
+        this.id = id;
+        this.hospitalName = hospitalName;
+        this.roadNameAddress = roadNameAddress;
+        this.businessStatusName = businessStatusName;
+    }
+
+    public static HospitalResponse of(Hospital hospital) {
         return new HospitalResponse(hospital.getId(), hospital.getRoadNameAddress(), hospital.getHospitalName(), hospital.getPatientRoomCount(),
                 hospital.getTotalNumberOfBeds(), hospital.getBusinessTypeName(), hospital.getTotalAreaSize());
     }

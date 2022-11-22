@@ -1,5 +1,6 @@
 package com.mustache.bbs.domain.dto;
 
+import com.mustache.bbs.domain.entity.Hospital;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,5 +31,9 @@ public class HospitalResponse {
 
     public void setBusinessStatusName(String businessStatusName) {
         this.businessStatusName = businessStatusName;
+    }
+
+    public Hospital toEntity(){
+        return new Hospital(id, hospitalName, roadNameAddress, businessStatusName);
     }
 }
