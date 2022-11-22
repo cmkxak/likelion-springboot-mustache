@@ -40,7 +40,10 @@ public class HospitalController {
     public String selectSingle(@PathVariable Integer id, Model model){
         HospitalResponse hospitalResponse = hospitalService.getById(id);
         Hospital hospital = hospitalResponse.toEntity();
+        List<ReviewResponseDTO> reviewList = reviewService.findByHospitalId(id);
+
         model.addAttribute("hospitals", hospital);
+        model.addAttribute("review", reviewList);
 
         return "hospitals/show";
     }
