@@ -33,7 +33,4 @@ public class HospitalResponse {
         this.businessStatusName = businessStatusName;
     }
 
-    public Hospital toEntity(){
-        return new Hospital(id, hospitalName, roadNameAddress, businessStatusName);
-    }
 }

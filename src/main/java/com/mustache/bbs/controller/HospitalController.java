@@ -37,12 +37,11 @@ public class HospitalController {
     }
 
     @GetMapping("/{id}")
-    public String selectSingle(@PathVariable Integer id, Model model){
+    public String findHospitalReview(@PathVariable Integer id, Model model){
         HospitalResponse hospitalResponse = hospitalService.getById(id);
-        Hospital hospital = hospitalResponse.toEntity();
         List<ReviewResponseDTO> reviewList = reviewService.findByHospitalId(id);
 
-        model.addAttribute("hospitals", hospital);
+        model.addAttribute("hospitals", hospitalResponse);
         model.addAttribute("review", reviewList);
 
         return "hospitals/show";
