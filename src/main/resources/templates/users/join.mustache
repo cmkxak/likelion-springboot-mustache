@@ -1,0 +1,26 @@
+{{>layouts/header}}
+<form action="/users/join" method="post">
+
+    <!--userName-->
+    <div class="mb-3">
+        <label for="userName" class="form-label">ID</label>
+        <input type="text" class="form-control" name="userName" aria-describedby="infoId">
+        <div id="infoId" class="form-text">아이디는 8자 이상으로 입력하세요.</div>
+    </div>
+
+    <!--password-->
+    <div class="mb-3">
+        <label for="password" class="form-label">비밀번호를 입력하세요.</label>
+        <input type="password" class="form-control" name="password" aria-describedby="passwordInfo">
+        <div id="passwordInfo" class="form-text">비밀번호는 8자 이상으로 입력하세요.</div>
+    </div>
+
+    <!--email-->
+    <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" class="form-control" name="email">
+    </div>
+
+    <button type="submit" class="btn btn-primary">가입하기</button>
+</form>
+{{>layouts/footer}}
