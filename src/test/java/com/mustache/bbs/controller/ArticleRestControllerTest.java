@@ -1,9 +1,9 @@
 package com.mustache.bbs.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mustache.bbs.domain.dto.ArticleAddRequest;
-import com.mustache.bbs.domain.dto.ArticleAddResponse;
-import com.mustache.bbs.domain.dto.ArticleResponseDTO;
+import com.mustache.bbs.domain.dto.article.ArticleAddRequest;
+import com.mustache.bbs.domain.dto.article.ArticleAddResponse;
+import com.mustache.bbs.domain.dto.article.ArticleResponseDTO;
 import com.mustache.bbs.service.ArticleService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

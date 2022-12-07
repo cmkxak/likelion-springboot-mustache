@@ -1,12 +1,10 @@
-package com.mustache.bbs.domain.dto;
+package com.mustache.bbs.domain.dto.user;
 
 import com.mustache.bbs.domain.entity.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@Builder
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 public class UserJoinRequest {
     private String userName;
@@ -19,10 +17,5 @@ public class UserJoinRequest {
                 .password(password)
                 .email(this.email)
                 .build();
-    }
-
-    @Override
-    public String toString(){
-        return this.userName + " " + this.getPassword();
     }
 }

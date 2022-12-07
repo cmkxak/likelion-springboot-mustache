@@ -1,6 +1,6 @@
 package com.mustache.bbs.domain.entity;
 
-import com.mustache.bbs.domain.dto.HospitalResponse;
+import com.mustache.bbs.domain.dto.hospital.HospitalResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

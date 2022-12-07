@@ -1,6 +1,6 @@
 package com.mustache.bbs.controller;
 
-import com.mustache.bbs.domain.dto.ArticleDto;
+import com.mustache.bbs.domain.dto.article.ArticleDto;
 import com.mustache.bbs.domain.entity.Article;
 import com.mustache.bbs.service.ArticleService;
 import lombok.AllArgsConstructor;
@@ -24,11 +24,6 @@ public class ArticleController {
     private ArticleService articleService;
 
     @GetMapping("")
-    public String index(){
-        return "redirect:/articles/list";
-    }
-
-    @GetMapping("/list")
     public String list(Model model){
         List<Article> articles = articleService.findAll();
         model.addAttribute("articles", articles);
@@ -90,7 +85,6 @@ public class ArticleController {
             articleService.delete(article);
             rttr.addFlashAttribute("msg", "게시글이 삭제되었습니다.");
         }
-
         return "redirect:/articles";
     }
 }

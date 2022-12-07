@@ -1,8 +1,8 @@
 package com.mustache.bbs.controller;
 
-import com.mustache.bbs.domain.dto.ArticleAddRequest;
-import com.mustache.bbs.domain.dto.ArticleAddResponse;
-import com.mustache.bbs.domain.dto.ArticleResponseDTO;
+import com.mustache.bbs.domain.dto.article.ArticleAddRequest;
+import com.mustache.bbs.domain.dto.article.ArticleAddResponse;
+import com.mustache.bbs.domain.dto.article.ArticleResponseDTO;
 import com.mustache.bbs.service.ArticleService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,6 @@ public class ArticleRestController {
 
     @PostMapping("/{id}")
     public ResponseEntity<ArticleAddResponse> add(@RequestBody ArticleAddRequest articleAddRequest){
-
         ArticleAddResponse articleAddResponse = articleService.addArticle(articleAddRequest);
 
         //200 ok if articleAddResponse exists

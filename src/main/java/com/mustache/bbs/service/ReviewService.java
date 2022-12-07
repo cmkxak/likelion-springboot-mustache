@@ -1,8 +1,7 @@
 package com.mustache.bbs.service;
 
-import com.mustache.bbs.domain.dto.ReviewResponseDTO;
+import com.mustache.bbs.domain.dto.review.ReviewResponseDTO;
 import com.mustache.bbs.repository.ReviewRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,7 @@
 package com.mustache.bbs.controller;
 
-import com.mustache.bbs.domain.dto.HospitalResponse;
-import com.mustache.bbs.domain.dto.ReviewResponseDTO;
-import com.mustache.bbs.domain.entity.Hospital;
+import com.mustache.bbs.domain.dto.hospital.HospitalResponse;
+import com.mustache.bbs.domain.dto.review.ReviewResponseDTO;
 import com.mustache.bbs.service.HospitalService;
 import com.mustache.bbs.service.ReviewService;
 import lombok.RequiredArgsConstructor;

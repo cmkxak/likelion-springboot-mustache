@@ -1,4 +1,4 @@
-package com.mustache.bbs.domain.dto;
+package com.mustache.bbs.domain.dto.article;
 
 import com.mustache.bbs.domain.entity.Article;
 import lombok.AllArgsConstructor;

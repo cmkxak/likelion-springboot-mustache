@@ -1,21 +1,21 @@
 package com.mustache.bbs.service;
 
-import com.mustache.bbs.domain.dto.ArticleAddRequest;
-import com.mustache.bbs.domain.dto.ArticleAddResponse;
-import com.mustache.bbs.domain.dto.ArticleResponseDTO;
+import com.mustache.bbs.domain.dto.article.ArticleAddRequest;
+import com.mustache.bbs.domain.dto.article.ArticleAddResponse;
+import com.mustache.bbs.domain.dto.article.ArticleResponseDTO;
 import com.mustache.bbs.domain.entity.Article;
 import com.mustache.bbs.repository.ArticleRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class ArticleService {
 
-    private ArticleRepository articleRepository;
+    private final ArticleRepository articleRepository;
 
     public Optional<Article> findById(Long id){
         return articleRepository.findById(id);

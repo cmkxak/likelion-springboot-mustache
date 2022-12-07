@@ -1,7 +1,7 @@
 package com.mustache.bbs.service;
 
-import com.mustache.bbs.domain.dto.HospitalDto;
-import com.mustache.bbs.domain.dto.HospitalResponse;
+import com.mustache.bbs.domain.dto.hospital.HospitalDto;
+import com.mustache.bbs.domain.dto.hospital.HospitalResponse;
 import com.mustache.bbs.domain.entity.Hospital;
 import com.mustache.bbs.repository.HospitalRepository;
 import lombok.AllArgsConstructor;
@@ -22,8 +22,16 @@ public class HospitalService {
 
     public HospitalResponse getById(Integer id) {
         Optional<Hospital> optHospital = hospitalRepository.findById(id); // Entity
+
         Hospital hospital = optHospital.get();
         HospitalResponse hospitalResponse = Hospital.of(hospital); // DTO
+
+        setBusinessStatusName(hospital, hospitalResponse);
+        System.out.println(hospitalResponse.getBusinessStatusName());
+        return hospitalResponse;
+    }
+
+    private static void setBusinessStatusName(Hospital hospital, HospitalResponse hospitalResponse) {
         if (hospital.getBusinessStatusCode() == 13) {
             hospitalResponse.setBusinessStatusName("영업중");
         } else if (hospital.getBusinessStatusCode() == 3) {
@@ -31,7 +39,6 @@ public class HospitalService {
         } else {
             hospitalResponse.setBusinessStatusName(String.valueOf(hospital.getBusinessStatusCode()));
         }
-        return hospitalResponse;
     }
 
     public List<HospitalDto> findByRoadnameAddress(String keyword, Pageable pageable) {

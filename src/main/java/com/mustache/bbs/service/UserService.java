@@ -1,7 +1,7 @@
 package com.mustache.bbs.service;
 
-import com.mustache.bbs.domain.dto.UserDTO;
-import com.mustache.bbs.domain.dto.UserJoinRequest;
+import com.mustache.bbs.domain.dto.user.UserDTO;
+import com.mustache.bbs.domain.dto.user.UserJoinRequest;
 import com.mustache.bbs.domain.entity.User;
 import com.mustache.bbs.exception.ErrorCode;
 import com.mustache.bbs.exception.UserNotFoundException;
