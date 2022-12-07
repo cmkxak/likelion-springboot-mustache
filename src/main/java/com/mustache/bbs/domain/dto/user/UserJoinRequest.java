@@ -3,7 +3,6 @@ package com.mustache.bbs.domain.dto.user;
 import com.mustache.bbs.domain.entity.User;
 import lombok.*;
 
-@Builder
 @AllArgsConstructor
 @Getter
 public class UserJoinRequest {
