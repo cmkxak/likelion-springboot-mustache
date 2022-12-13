@@ -25,7 +25,7 @@ public class UserService {
 
     @Value("${jwt.token.secret}")
     private String secretKey;
-    private final long expireTimeMs = 100 * 60 * 60;
+    private final long expireTimeMs = 1000 * 60 * 60;
 
     public UserJoinResponse join(UserJoinRequest userJoinRequest) {
         userRepository.findByUserName(userJoinRequest.getUserName()).ifPresent(user -> {
